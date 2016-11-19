@@ -28,6 +28,7 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
 
 def lambda_handler(event, context):
     if event["request"]["intent"]["name"] == "StartConversationIntent":
+        return build_speechlet_response("", "finding conversation", "", "true")
         oClient.start()
         return build_speechlet_response("", "finding conversation", "", "true")
     elif event["request"]["intent"]["name"] == "ReadMessagesIntent":
