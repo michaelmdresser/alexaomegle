@@ -1,5 +1,10 @@
 from pyomegle import OmegleHandler, OmegleClient
 
+
+oHandler = OmegleHandler(loop=True)
+oClient = OmegleClient(oHandler, wpm=47, lang='en')
+
+
 def build_speechlet_response(title, output, reprompt_text, should_end_session):
     return {
         'outputSpeech': {
@@ -23,4 +28,4 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
 
 def lambda_handler(event, context):
     if event["request"]["intent"]["name"] == "StartConversationIntent":
-        return {}
+        oClient.start()
