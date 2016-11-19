@@ -2,21 +2,24 @@ from pyomegle import OmegleHandler, OmegleClient
 
 
 unreadMessages = []
-#oHandler = OmegleHandler(unreadMessages, loop=True)
-#oClient = OmegleClient(oHandler, wpm=47, lang='en')
+oHandler = OmegleHandler(unreadMessages, loop=True)
+oClient = OmegleClient(oHandler, wpm=47, lang='en')
 
 
 def build_speechlet_response(title, output, reprompt_text, should_end_session):
     return {
-        'outputSpeech': {
-            'type': 'PlainText',
-            'text': output
+        'version': "1.0",
+        'response': {
+            'outputSpeech': {
+                'type': 'PlainText',
+                'text': output
+            }
         },
-#        'card': {
-#            'type': 'Simple',
-#            'title': "SessionSpeechlet - " + title,
-#            'content': "SessionSpeechlet - " + output
-#        },
+        'card': {
+            'type': 'Simple',
+            'title': "SessionSpeechlet - " + title,
+            'content': "SessionSpeechlet - " + output
+        },
         'reprompt': {
             'outputSpeech': {
                 'type': 'PlainText',
@@ -25,12 +28,12 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
         },
         'shouldEndSession': should_end_session
     }
-    
+
 
 def lambda_handler(event, context):
     if event["request"]["intent"]["name"] == "StartConversationIntent":
-        return build_speechlet_response("", "finding conversation", "", "true")
         oClient.start()
+        print unreadMessages
         return build_speechlet_response("", "finding conversation", "", "true")
     elif event["request"]["intent"]["name"] == "ReadMessagesIntent":
         unread = ""
