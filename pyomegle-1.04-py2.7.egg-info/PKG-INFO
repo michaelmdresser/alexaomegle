@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: pyomegle
+Version: 1.04
+Summary: Python API for Omegle webchat
+Home-page: https://github.com/elias94/pyomegle
+Author: Elia Scotto
+Author-email: frodohack@gmail.com
+License: MIT
+Description: Python API for Omegle webchat.                         Usage: https://github.com/elias94/pyomegle
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Topic :: Communications :: Chat
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Internet :: WWW/HTTP :: Browsers

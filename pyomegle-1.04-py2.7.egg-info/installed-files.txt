@@ -1,0 +1,11 @@
+../pyomegle/__init__.py
+../pyomegle/pyomegle.py
+../pyomegle/__init__.pyc
+../pyomegle/pyomegle.pyc
+.
+dependency_links.txt
+not-zip-safe
+PKG-INFO
+requires.txt
+SOURCES.txt
+top_level.txt

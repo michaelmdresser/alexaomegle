@@ -1,0 +1,10 @@
+setup.cfg
+setup.py
+pyomegle/__init__.py
+pyomegle/pyomegle.py
+pyomegle.egg-info/PKG-INFO
+pyomegle.egg-info/SOURCES.txt
+pyomegle.egg-info/dependency_links.txt
+pyomegle.egg-info/not-zip-safe
+pyomegle.egg-info/requires.txt
+pyomegle.egg-info/top_level.txt
