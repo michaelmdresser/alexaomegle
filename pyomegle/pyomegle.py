@@ -18,7 +18,7 @@ class EventThread(threading.Thread):
         self._stop = threading.Event()
 
     def run(self):
-        try:    
+        try:
             response = self.instance.browser.open(self.start_url)
         except Exception, ex:
             print (str(ex))
@@ -248,13 +248,14 @@ class OmegleHandler(object):
     RECAPTCHA_IMAGE_URL = 'http://www.google.com/recaptcha/api/image?c=%s'
     recaptcha_challenge_regex = re.compile(r"challenge\s*:\s*'(.+)'")
 
-    def __init__(self, loop=False):
+    def __init__(self, unreadMessages, loop=False):
         self.loop = loop
-    
+        self.unreadMessages = unreadMessages
+
     def _setup(self, omegle):
         """ Called by the Omegle class so event handlers can use the Omegle instance """
         self.omegle = omegle
-    
+
     def waiting(self):
         """ Called when the server tells us we're waiting on a stranger to connect """
         print ('Looking for someone you can chat with...')
@@ -270,22 +271,23 @@ class OmegleHandler(object):
     def stopped_typing(self):
         """ Called when the user stop typing a message """
         print ('Stranger has stopped typing.')
-    
+
     def message(self, message):
         """ Called when a message is received from the connected stranger """
-        print ('Stranger: %s' % message)
+        #print ('Stranger: %s' % message)
+        self.unreadMessages.append(message)
 
     def common_likes(self, likes):
         """ Called when you and stranger likes the same thing"""
         print ('You both like %s.' % ', '.join(likes))
-    
+
     def disconnected(self):
         """ Called when the stranger disconnects """
         print ('Stranger has disconnected.')
 
         if self.loop:   # new session
             self.omegle.start()
-    
+
     def captcha_required(self):
         """ Called when the server asks for captcha """
         url = RECAPTCHA_CHALLENGE_URL % challenge
